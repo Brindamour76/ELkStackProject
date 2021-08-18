@@ -1,0 +1,42 @@
+#1 /bin/bash
+
+
+# Script to accept user input of an IP range and 
+# ping all 254 addresses to return a list of network devices
+
+#printf "Maybe a test"
+
+nowvar=$(date +'%Y%m%d%H%M')
+
+echo "Enter an IP Range and I will Ping all"
+echo
+sleep 1
+
+read -ep $'First Octet:\t' -i 192 first_octet
+sleep 1
+read -ep $'Second Octet:\t' -i 168 second_octet
+sleep 1
+read -ep $'Third Octet:\t' -i 0 third_octet
+sleep 1
+read -ep $'Port Number:\t' -i 80 port_num
+sleep 1
+echo 'IP Range:     ' $first_octet.$second_octet.$third_octet".0/24"
+echo 'Port Number:  ' $port_num
+sleep 1
+ip_add=$first_octet.$second_octet.$third_octet
+
+
+for ip in {1..254} 
+do
+	ping -c 1 $ip_add.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" | cat >> afile.$nowvar &
+	#echo $stdin
+	#echo $stdout
+done
+
+for ips in $(sort afile.$nowvar);
+do 
+	echo $ips
+	sudo nmap  -sS -Pn -vv -r -p 1-$port_num -r -T4 $ips | grep -A 20 "PORT";
+	echo
+	echo $ips
+done

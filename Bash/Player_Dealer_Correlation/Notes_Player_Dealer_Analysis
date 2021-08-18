@@ -1,0 +1,40 @@
+During our analysis, we noted that a particular player, Mylie Schmidt, was always present when major losses occurred at the Roulette Table. 
+These losses are in the range of $65000 to $182000 and are out of context with the house takings during other hours on the same day.
+We have also found that the same Roulette Dealer, Billy Jones, was also present at these times.
+
+
+Times Loss Occured
+0310_win_loss_player_data:05:00:00 AM
+0310_win_loss_player_data:08:00:00 AM
+0310_win_loss_player_data:02:00:00 PM
+0310_win_loss_player_data:08:00:00 PM
+0310_win_loss_player_data:11:00:00 PM
+0312_win_loss_player_data:05:00:00 AM
+0312_win_loss_player_data:08:00:00 AM
+0312_win_loss_player_data:02:00:00 PM
+0312_win_loss_player_data:08:00:00 PM
+0312_win_loss_player_data:11:00:00 PM
+0315_win_loss_player_data:05:00:00 AM
+0315_win_loss_player_data:08:00:00 AM
+0315_win_loss_player_data:02:00:00 PM
+-----------------
+Common Player
+Mylie Schmidt
+-----------------
+Total number of times player at table when loss occurred
+13
+-----------------
+Total number of times player at table
+34
+-----------------
+Primary Dealer when Losses Occur
+Billy Jones
+------------------
+Number of times Dealer worked when Losses Occured
+13
+------------------
+Total Number of Times Dealer worked on roulette table
+40
+---------------
+Total Number of Times Dealer Worked
+80

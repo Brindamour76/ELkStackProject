@@ -1,0 +1,57 @@
+#!/bin/bash
+
+#######################################################################################################
+#
+# User Auditing Script
+#
+# Date  Created:	12th June 2021, Year two of the Covid
+# Created By:		Me
+# Revised:		
+#
+#######################################################################################################
+
+
+#List the groups
+echo "Listing groups"
+groups
+groups | cat > /tmp/groups1
+echo "#################"
+
+# List Users from passwd file with a home directory
+echo "Listing users from passwd file with a HOME directory"
+cat /etc/passwd | grep home | awk -F ':' '{print $1}'
+cat /etc/passwd | grep home | awk -F ':' '{print $1}' | cat > /tmp/users1
+echo "##################"
+
+
+# List users from /home
+echo "Listing users with a /HOME directory"
+ls /home | cat
+ls /home | cat > /tmp/users2
+echo "#######################"
+
+# List sudo users
+FILES="/tmp/users1
+	/tmp/users2"
+for user in $(sort $FILES | uniq)
+do
+	echo $user
+	echo $user >> /tmp/sudoersm
+	sudo -l -U $user #this doesn't seem to work properly, it does now
+	sudo -l -U $user | cat >> /tmp/sudoersm
+	echo "__________________"
+	echo "__________________" >> /tmp/sudoersm
+done
+
+echo "#####################"
+
+# List sudoers file
+sudo cat /etc/sudoers | grep -i ALL
+
+
+
+
+
+
+
+

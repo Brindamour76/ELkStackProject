@@ -1,0 +1,110 @@
+#! /bin/bash
+
+#___________________________________________
+# Sample and testing file for bash scripting
+#___________________________________________
+
+# Some basic commands first
+# env
+# sleep 1
+# That works
+
+# Print some useful specific info
+echo $USERNAME
+echo "My username is $USERNAME."
+echo $HOME
+echo $SHELL
+echo "The Kernal is $(uname -r)."
+sleep 1
+# That Works
+
+# Print some system info
+echo $(df -h / | awk 'NR==2 {print $4}')
+echo $(free -h | awk 'NR==2 {print $4}')
+sleep 1
+# No idea about the AWK stuff though 
+
+# Print the date and time
+# printf %(%Y-%m-%d)T
+date
+sleep 1
+# Some date options
+now=$(date)
+tz=$(date +%z)
+hours=$(date +%H)
+printf "\tThe TZ is:\t\t%s\n" "$tz"
+printf "\tThe Hour is:\t\t%s\n" "$hours"
+sleep 1
+# That was harder than it should have been methinks
+
+# An example of Brace expansion
+echo {1..10}
+echo {01..10}
+echo {a..z}
+sleep 1
+# touch File_{01..12}{a..d} #for example
+# Simples!!
+
+#Parameter Expansion
+a="Hello World"
+echo $a
+echo ${a}
+sleep 1
+echo ${a//l/r} #Replace all Ls with Rs
+echo ${a/l/r}  #Replace first L with R
+sleep 1
+# Seems easy enough..
+
+#Command Substitution
+echo "My username is $USERNAME."
+sleep 1
+
+#------------------------------------------
+# Useful command of the day
+#
+# top
+#
+# CPU Utilisation
+#
+#------------------------------------------
+
+# Variables
+myvar="Hello!"
+echo "The value of the myvar variable is: $myvar."
+myvar="Bonjour monsieur!"
+echo "The value of the myvar variable is: $myvar."
+sleep 1
+
+declare -r myname="Shane" #Read only variable, cannot be changed
+echo "The value of the myname variable is: $myname"
+myname="Frodo"
+echo "The value of the myname variable is: $myname"
+sleep 1
+
+declare -l lowerstring="This is some TEXT!"
+echo "The value of the lowerstring variable is: $lowerstring."
+lowerstring="lets change the Value!"
+echo "The value of the lowerstring variable is now: $lowerstring."
+sleep 1
+
+declare -u upperstring="Je suis fatigue."
+echo "The value of the upperstring variable is: $upperstring."
+upperstring="Nous changeons la texte"
+echo "The value of the upperstring variable is: $upperstring."
+sleep 1
+# Works
+
+#Test 
+[ -d ~ ]; echo $?
+[ -d /bin/bash ]; echo $?
+[ "cat" = "cat" ]; echo $?
+[ "cat" = "dog" ]; echo $?
+[ 4 -eq 3 ]; echo $?
+[ ! 4 -eq 3 ]; echo $?
+sleep 1
+
+# Extended test
+[[ -d ~ && -a /bin/bash ]]; echo $?  #AND
+[[ -d ~ || -a /bin/bash ]]; echo $?  #OR
+
+

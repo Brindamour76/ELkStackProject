@@ -1,0 +1,37 @@
+# ! /bin/bash
+
+# Challenge from Scott
+
+echo "Welcome to Random Card Generator"
+echo
+
+waitingnumber=$(( 0  + $RANDOM % 3 ))
+
+mysterynumber=$(( 1 + $RANDOM % 10 ))
+
+declare -a cards=(
+	"Ace of Spades"
+	"Four of Clubs"
+	"Monty Python"
+	"Three of Diamonds"
+	"Thirty-two of Spades"
+	"Jack of Hearts"
+	"Queen of Diamonds"
+	"Nine of Clubs"
+	"Six of Spades"
+	"10 of Hearts"
+)
+
+case $waitingnumber in
+	0) sleep 1; echo "Soon, my pretties..."; sleep 1;;
+	1) sleep 1; echo " Not yet "; sleep 1;;
+	2) sleep 1; echo "Preparation is Key..."; sleep 1;;
+	3) sleep 1; echo "I am not amsuseddfgk,msdf"; sleep 1;;
+esac
+
+echo
+echo ${cards[mysterynumber]}
+echo
+
+
+
